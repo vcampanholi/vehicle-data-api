@@ -1,1 +1,1 @@
-web: java $ JAVA_OPTS -Dserver.port = $ PORT -jar target / *. jar -Dspring.profiles.active = prod
+web: java $JAVA_OPTS -Dserver.port = $PORT -jar build/libs/vehicle-data-0.0.1-SNAPSHOT.jar jar -Dspring.profiles.active = prod
