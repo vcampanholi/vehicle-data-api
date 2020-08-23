@@ -18,6 +18,14 @@ repositories {
 	mavenCentral()
 }
 
+wrapper {
+	gradleVersion = '6.4.1'
+}
+
+tasks.withType(JavaCompile) {
+	options.encoding = 'UTF-8'
+}
+
 jacoco {
 	toolVersion = "0.8.4"
 }
