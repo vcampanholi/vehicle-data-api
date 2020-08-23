@@ -34,16 +34,16 @@ sonar cloud:
   stage: test
   image: gradle:jre11-slim
   cache:
-    key: "${CI_JOB_NAME}"
+    key: $CI_JOB_NAME
     paths:
       - .sonar/cache
-  script: gradle sonarqube
+#  script: gradle sonarqube
     only:
       - merge_requests
       - master
       - develop
-#  script:
-#    - mvn clean verify sonar:sonar -Dsonar.host.url=https://sonarcloud.io -Dsonar.organization=$SONAR_ORGANIZATION -Dsonar.login=$SONAR_LOGIN
+  script:
+    - mvn clean verify sonar:sonar -Dsonar.host.url=https://sonarcloud.io -Dsonar.organization=$SONAR_ORGANIZATION -Dsonar.login=$SONAR_LOGIN
 
 stable:
   stage: deploy
