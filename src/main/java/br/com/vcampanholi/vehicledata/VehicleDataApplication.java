@@ -13,9 +13,6 @@ public class VehicleDataApplication {
 		SpringApplication.run(VehicleDataApplication.class, args);
 	}
 
-	/**
-	 * Configura o Spring para usar o timezone -3, pois o Heroku usa UTC.
-	 */
 	@PostConstruct
 	public void init() {
 		TimeZone.setDefault(TimeZone.getTimeZone("America/Sao_Paulo"));
