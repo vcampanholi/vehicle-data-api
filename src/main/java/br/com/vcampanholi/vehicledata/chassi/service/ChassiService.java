@@ -60,13 +60,12 @@ public class ChassiService {
         int sequentialNumber = random.nextInt(limitValue);
         String sequencial = Long.toString(sequentialNumber);
 
-        String result = "";
         if (sequencial.length() > 6) {
-            result = sequencial.substring(0, 6);
+            return sequencial.substring(0, 6);
         } else if (sequencial.length() < 6) {
-            result = rightPad(sequencial, 6, "1");
+            return rightPad(sequencial, 6, "1");
         }
-        return result;
+        return Long.toString(sequentialNumber);
     }
 
     public Mono<String> validateChassiNumber(ChassiBO chassi) {
