@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.*;
 import reactor.core.publisher.Mono;
 
 @RestController
-@RequestMapping("/vehicle/chassi")
+@RequestMapping("/api/v1/chassi")
 public class ChassiController {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(ChassiController.class);
@@ -23,7 +23,7 @@ public class ChassiController {
         this.converter = converter;
     }
 
-    @PostMapping()
+    @PostMapping("/generator")
     public Mono<ChassiResponse> generateChassiNumber(@RequestBody ChassiRequest request) {
         return Mono.just(converter.convert(request))
                 .flatMap(chassiService::generateChassiNumber)
