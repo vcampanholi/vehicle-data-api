@@ -1,18 +1,18 @@
 dependencies {
 
     //spring boot
-    compile("org.springframework.boot:spring-boot-starter")
-    compile("org.springframework.boot:spring-boot-starter-actuator")
-    compile 'org.springframework.boot:spring-boot-starter-webflux'
+    implementation("org.springframework.boot:spring-boot-starter")
+    implementation("org.springframework.boot:spring-boot-starter-actuator")
+    implementation 'org.springframework.boot:spring-boot-starter-webflux'
 
     //openApi swagger
-    compile 'org.springdoc:springdoc-openapi-webflux-ui:1.4.4'
+    implementation 'org.springdoc:springdoc-openapi-webflux-ui:1.4.4'
 
     //apache commonslang 3
-    compile 'org.apache.commons:commons-lang3:3.9'
+    implementation 'org.apache.commons:commons-lang3:3.9'
 
     //Vvar object-functional library for Java 8+
-    compile 'io.vavr:vavr:0.10.3'
+    implementation 'io.vavr:vavr:0.10.3'
 
     testImplementation('org.springframework.boot:spring-boot-starter-test') {
         exclude group: 'org.junit.vintage', module: 'junit-vintage-engine'
