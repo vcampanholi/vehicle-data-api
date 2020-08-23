@@ -1,0 +1,50 @@
+plugins {
+	id 'java'
+	id 'idea'
+	id 'jacoco'
+	id 'org.sonarqube' version '2.7.1'
+	id 'org.springframework.boot' version '2.3.3.RELEASE'
+	id 'io.spring.dependency-management' version '1.0.10.RELEASE'
+}
+
+apply from: "dependencies.gradle"
+
+group = 'br.com.vcampanholi.vehicledata'
+version = '0.0.1-SNAPSHOT'
+sourceCompatibility = '11'
+
+repositories {
+	mavenCentral()
+}
+
+jacoco {
+	toolVersion = "0.8.4"
+}
+
+sonarqube {
+	properties {
+		property "sonar.exclusions", "**/*VehicleDataApplication.java, **"
+		property "sonar.host.url", "https://sonarcloud.io/"
+	}
+}
+
+processResources {
+	filesMatching('application.yml') {
+		expand(project.properties)
+	}
+}
+
+test {
+	useJUnitPlatform()
+	dependsOn 'cleanTest'
+	jvmArgs "-Dspring.test.context.cache.maxSize=1"
+	//we want display the following test events
+	testLogging {
+		exceptionFormat "FULL"
+		events "FAILED", "SKIPPED"
+	}
+}
+
+springBoot {
+	buildInfo()
+}
