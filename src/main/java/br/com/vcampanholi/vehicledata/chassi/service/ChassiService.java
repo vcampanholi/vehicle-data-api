@@ -5,6 +5,8 @@ import org.springframework.stereotype.Service;
 import reactor.core.publisher.Mono;
 
 import java.util.Random;
+
+import static org.apache.commons.lang3.StringUtils.rightPad;
     /*Codificação
     Interpretação dos dígitos
     Dígitos: 1 a 3
@@ -53,9 +55,18 @@ public class ChassiService {
 
     private String getSequencialNumber(Integer limitValue) {
         if (limitValue == null || limitValue == 0) limitValue = LIMIT_VALUE;
+
         Random random = new Random();
         int sequentialNumber = random.nextInt(limitValue);
-        return Long.toString(sequentialNumber);
+        String sequencial = Long.toString(sequentialNumber);
+
+        String result = "";
+        if (sequencial.length() > 6) {
+            result = sequencial.substring(0, 6);
+        } else if (sequencial.length() < 6) {
+            result = rightPad(sequencial, 6, "1");
+        }
+        return result;
     }
 
     public Mono<String> validateChassiNumber(ChassiBO chassi) {
