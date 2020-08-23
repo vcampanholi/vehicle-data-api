@@ -14,18 +14,14 @@ group = 'br.com.vcampanholi.vehicledata'
 version = '0.0.1-SNAPSHOT'
 sourceCompatibility = '11'
 
-repositories {
-	mavenCentral()
-}
-
 jar {
 	manifest {
-		attributes(
-				'Class-Path': configurations.compile.files.collect {"$it.name"}.join(' '),
-				'Main-Class': 'br.com.vcampanholi.vehicledata.VehicleDataApplication')}
-	from {
-		configurations.compile.collect { it.isDirectory() ? it : zipTree(it) }
+		attributes 'Main-Class': 'br.com.vcampanholi.vehicledata.VehicleDataApplication'
 	}
+}
+
+repositories {
+	mavenCentral()
 }
 
 jacoco {
