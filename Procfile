@@ -1,1 +1,1 @@
-web: java -jar target/vehicle-data-1.0.0jar
+web: java -jar target/vehicle-data-1.0.0.jar
