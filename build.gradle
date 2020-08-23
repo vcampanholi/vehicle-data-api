@@ -18,12 +18,14 @@ repositories {
 	mavenCentral()
 }
 
-wrapper {
-	gradleVersion = '6.4.1'
-}
-
-tasks.withType(JavaCompile) {
-	options.encoding = 'UTF-8'
+jar {
+	manifest {
+		attributes(
+				'Class-Path': configurations.compile.files.collect {"$it.name"}.join(' '),
+				'Main-Class': 'br.com.vcampanholi.vehicledata.VehicleDataApplication')}
+	from {
+		configurations.compile.collect { it.isDirectory() ? it : zipTree(it) }
+	}
 }
 
 jacoco {
