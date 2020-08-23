@@ -2,7 +2,6 @@ plugins {
 	id 'java'
 	id 'idea'
 	id 'jacoco'
-	id 'application'
 	id 'org.sonarqube' version '3.0'
 	id 'org.springframework.boot' version '2.3.3.RELEASE'
 	id 'io.spring.dependency-management' version '1.0.10.RELEASE'
@@ -48,4 +47,17 @@ test {
 
 springBoot {
 	buildInfo()
+}
+
+task stage(type: Copy, dependsOn: [clean, build]) {
+	from jar.archivePath
+	into project.rootDir
+	rename {
+		'app.jar'
+	}
+}
+stage.mustRunAfter(clean)
+
+clean {
+	project.file('app.jar').delete()
 }
