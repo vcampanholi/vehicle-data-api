@@ -11,7 +11,7 @@ plugins {
 apply from: "dependencies.gradle"
 
 group = 'br.com.vcampanholi.vehicledata'
-version = '0.0.1-SNAPSHOT'
+version = '1.0.0'
 sourceCompatibility = '11'
 
 repositories {

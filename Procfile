@@ -1,1 +1,1 @@
-web: java $JAVA_OPTS -Dserver.port=$PORT -jar target/vehicle-data-*.jar
+web: java -jar target/vehicle-data-1.0.0jar
