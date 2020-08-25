@@ -35,13 +35,13 @@ processResources {
 }
 
 test {
-	useJUnitPlatform()
 	dependsOn 'cleanTest'
-	jvmArgs "-Dspring.test.context.cache.maxSize=1"
-	//we want display the following test events
+
+	useJUnitPlatform()
+
 	testLogging {
-		exceptionFormat "FULL"
-		events "FAILED", "SKIPPED"
+		events 'passed', 'skipped', 'failed'
+		exceptionFormat "full"
 	}
 }
 

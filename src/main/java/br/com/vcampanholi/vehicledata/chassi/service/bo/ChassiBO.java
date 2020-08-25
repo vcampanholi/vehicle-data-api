@@ -83,7 +83,7 @@ public class ChassiBO {
         }
 
         public ChassiBO build() {
-            if (nonNull(unitsProduced) && unitsProduced > 1000000)
+            if (nonNull(unitsProduced) && unitsProduced > 9999999)
                 throw new BusinessException(VehicleDataErrorCode.LIMIT_UNITS_PRODUCED.withoutParams());
 
             if (nonNull(chassiNumber)) {

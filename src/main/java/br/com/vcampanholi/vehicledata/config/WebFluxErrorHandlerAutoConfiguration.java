@@ -126,7 +126,7 @@ public class WebFluxErrorHandlerAutoConfiguration {
 
             return ServerResponse.status(httpStatus.value())
                     .header(HttpHeaders.CONTENT_TYPE, MediaType.APPLICATION_JSON_VALUE)
-                    .syncBody(errorMessage);
+                    .bodyValue(errorMessage);
         }
 
         private ContractsException mapException(final Throwable throwable) {
